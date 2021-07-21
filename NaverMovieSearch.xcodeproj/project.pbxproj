@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -56,7 +56,6 @@
 				F917CB31A384A3631B50E995 /* Pods-NaverMovieSearch.debug.xcconfig */,
 				982F80C3488319D5330F2ABC /* Pods-NaverMovieSearch.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -383,7 +382,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = SQ839AG54C;
-				INFOPLIST_FILE = NaverMovieSearch/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/NaverMovieSearch/Resource/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -405,7 +404,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = SQ839AG54C;
-				INFOPLIST_FILE = NaverMovieSearch/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/NaverMovieSearch/Resource/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
