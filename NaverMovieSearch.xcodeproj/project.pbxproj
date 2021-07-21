@@ -17,6 +17,7 @@
 		D29A531B26A7AB69003E5D00 /* APIKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = D29A531A26A7AB69003E5D00 /* APIKey.plist */; };
 		D29A532126A7ACC7003E5D00 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29A532026A7ACC7003E5D00 /* NetworkResult.swift */; };
 		D29A532326A7ACD0003E5D00 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29A532226A7ACD0003E5D00 /* NetworkService.swift */; };
+		D29A532726A7B216003E5D00 /* MovieItemVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29A532626A7B216003E5D00 /* MovieItemVO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		D29A531A26A7AB69003E5D00 /* APIKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKey.plist; sourceTree = "<group>"; };
 		D29A532026A7ACC7003E5D00 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		D29A532226A7ACD0003E5D00 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		D29A532626A7B216003E5D00 /* MovieItemVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieItemVO.swift; sourceTree = "<group>"; };
 		F917CB31A384A3631B50E995 /* Pods-NaverMovieSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaverMovieSearch.debug.xcconfig"; path = "Target Support Files/Pods-NaverMovieSearch/Pods-NaverMovieSearch.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,9 +90,11 @@
 			children = (
 				D29A530026A79F9D003E5D00 /* AppDelegate.swift */,
 				D29A530226A79F9D003E5D00 /* SceneDelegate.swift */,
-				D29A531626A7A0E5003E5D00 /* New Group */,
+				D29A531626A7A0E5003E5D00 /* View */,
+				D29A532526A7B1F0003E5D00 /* Model */,
 				D29A531F26A7ACB6003E5D00 /* Network */,
 				D29A531526A7A0CB003E5D00 /* Storyboard */,
+				D29A532426A7B174003E5D00 /* Extension */,
 				D29A531426A7A0A4003E5D00 /* Resource */,
 			);
 			path = NaverMovieSearch;
@@ -115,12 +119,12 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
-		D29A531626A7A0E5003E5D00 /* New Group */ = {
+		D29A531626A7A0E5003E5D00 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				D29A530426A79F9D003E5D00 /* ViewController.swift */,
 			);
-			path = "New Group";
+			path = View;
 			sourceTree = "<group>";
 		};
 		D29A531F26A7ACB6003E5D00 /* Network */ = {
@@ -130,6 +134,21 @@
 				D29A532226A7ACD0003E5D00 /* NetworkService.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		D29A532426A7B174003E5D00 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		D29A532526A7B1F0003E5D00 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D29A532626A7B216003E5D00 /* MovieItemVO.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D29A532726A7B216003E5D00 /* MovieItemVO.swift in Sources */,
 				D29A532326A7ACD0003E5D00 /* NetworkService.swift in Sources */,
 				D29A530526A79F9D003E5D00 /* ViewController.swift in Sources */,
 				D29A530126A79F9D003E5D00 /* AppDelegate.swift in Sources */,
