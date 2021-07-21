@@ -22,6 +22,7 @@
 		D29A532B26A7C108003E5D00 /* UIKit_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29A532A26A7C108003E5D00 /* UIKit_Extension.swift */; };
 		D29A532D26A7C481003E5D00 /* MovieItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29A532C26A7C481003E5D00 /* MovieItemCell.swift */; };
 		D29A533226A7CC64003E5D00 /* MovieListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29A533126A7CC64003E5D00 /* MovieListVM.swift */; };
+		D2C079B126A7F3FC0022968F /* MovieSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C079B026A7F3FC0022968F /* MovieSearchService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		D29A532A26A7C108003E5D00 /* UIKit_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKit_Extension.swift; sourceTree = "<group>"; };
 		D29A532C26A7C481003E5D00 /* MovieItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieItemCell.swift; sourceTree = "<group>"; };
 		D29A533126A7CC64003E5D00 /* MovieListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListVM.swift; sourceTree = "<group>"; };
+		D2C079B026A7F3FC0022968F /* MovieSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchService.swift; sourceTree = "<group>"; };
 		F917CB31A384A3631B50E995 /* Pods-NaverMovieSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaverMovieSearch.debug.xcconfig"; path = "Target Support Files/Pods-NaverMovieSearch/Pods-NaverMovieSearch.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,6 +144,7 @@
 			children = (
 				D29A532026A7ACC7003E5D00 /* NetworkResult.swift */,
 				D29A532226A7ACD0003E5D00 /* NetworkService.swift */,
+				D2C079B026A7F3FC0022968F /* MovieSearchService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				D29A532726A7B216003E5D00 /* MovieItemVO.swift in Sources */,
 				D29A532326A7ACD0003E5D00 /* NetworkService.swift in Sources */,
 				D29A532B26A7C108003E5D00 /* UIKit_Extension.swift in Sources */,
+				D2C079B126A7F3FC0022968F /* MovieSearchService.swift in Sources */,
 				D29A533226A7CC64003E5D00 /* MovieListVM.swift in Sources */,
 				D29A530526A79F9D003E5D00 /* MovieListVC.swift in Sources */,
 				D29A532926A7B2DD003E5D00 /* NaverMovieAPIResponseData.swift in Sources */,
