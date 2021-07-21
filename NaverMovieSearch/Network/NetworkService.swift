@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 protocol NetworkService {
-    typealias networkSuccessResult = (resCode: Int, resResult: Any)
+    typealias networkSuccessResult = (Any)
     func get<T: Codable>(_ URL: String, params: Parameters?, type: T.Type, completion: @escaping (NetworkResult<networkSuccessResult>) -> Void)
 }
 
@@ -28,9 +28,8 @@ extension NetworkService {
                 if let value = res.value {
                     let decoder = JSONDecoder()
                     do {
-                        let resCode = res.response?.statusCode ?? 0
                         let data = try decoder.decode(T.self, from: value)
-                        completion(.networkSuccess((resCode, data)))
+                        completion(.networkSuccess(data))
                     } catch(let error) {
                         print("GET \(encodeUrl) >> Decoding Error: \(error)")
                     }
@@ -40,7 +39,7 @@ extension NetworkService {
                     completion(.networkFail)
                 } else {
                     let resCode = res.response?.statusCode ?? 0
-                    completion(.networkError(resCode: resCode, msg: err.localizedDescription))
+                    completion(.networkError((resCode, err.localizedDescription)))
                 }
             }
         }

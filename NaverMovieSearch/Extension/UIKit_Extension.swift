@@ -40,7 +40,7 @@ extension UIColor {
 }
 
 extension UIImageView {
-    public func imageFromUrl(_ urlString: String?) {
+    public func setImageFromUrl(_ urlString: String?) {
         let defaultImg = UIImage(named: "img_datalab_explain")
         if let url = urlString {
             if url.isEmpty {
