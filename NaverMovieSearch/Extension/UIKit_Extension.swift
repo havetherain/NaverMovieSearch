@@ -8,6 +8,15 @@
 import UIKit
 import Kingfisher
 
+extension UIViewController {
+    func makeSimpleAlert(title: String, content msg: String) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
+}
+
 extension UIColor {
     convenience init(_ hex: String) {
         let hexString = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
@@ -30,7 +39,7 @@ extension UIColor {
     }
 }
 
-extension UIImageView{
+extension UIImageView {
     public func imageFromUrl(_ urlString: String?) {
         let defaultImg = UIImage(named: "img_datalab_explain")
         if let url = urlString {

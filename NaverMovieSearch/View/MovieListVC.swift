@@ -30,12 +30,19 @@ class MovieListVC: UIViewController {
 
         $0.borderStyle = .roundedRect
         $0.clearButtonMode = .whileEditing
+        $0.returnKeyType = .search
+        $0.autocapitalizationType = .none
+
+//        $0.addTarget(self, action: #selector(textFieldDidEditingChanged(_:)), for: .editingChanged)
     }
 
     private let movieItemTableView: UITableView = UITableView().then {
         $0.backgroundColor = .white
         $0.register(MovieItemCell.self, forCellReuseIdentifier: "MovieItemCell")
     }
+
+    let vm: MovieListVM = MovieListVM()
+    var searchTimer: Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,5 +84,89 @@ class MovieListVC: UIViewController {
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
+    }
+}
+
+extension MovieListVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return vm.movieItems.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieItemCell", for: indexPath) as! MovieItemCell
+
+        return cell
+    }
+}
+
+extension MovieListVC: UITextFieldDelegate {
+    @objc func textFieldDidEditingChanged(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+
+        if searchTimer != nil {
+            searchTimer?.invalidate()
+            searchTimer = nil
+        }
+
+        searchTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(searchForKeyword(_:)), userInfo: text, repeats: false)
+    }
+
+    @objc func searchForKeyword(_ timer: Timer) {
+//        if isSearch {
+//            isSearch = false
+//            return
+//        }
+//
+        guard let searchWord = timer.userInfo as? String else { return }
+
+        if searchWord.count == 0 {
+//            recommendContainerView.isHidden = false
+//            recommendCompanyNameTableView.isHidden = true
+//            searchResultRecruitPagerVC.view.isHidden = true
+        } else {
+//            setScreenSpinner()
+
+//            vm.getCompanyGroupName(searchWord: searchWord) {
+//                if self.vm.companyGroups.count == 0 {
+//                    self.recommendContainerView.isHidden = false
+//                    self.recommendCompanyNameTableView.isHidden = true
+//                    self.searchResultRecruitPagerVC.view.isHidden = true
+//                } else {
+//                    self.recommendContainerView.isHidden = true
+//                    self.recommendCompanyNameTableView.isHidden = false
+//                    self.searchResultRecruitPagerVC.view.isHidden = true
+//                }
+//
+//                self.recommendCompanyNameTableView.reloadData()
+//                self.removeScreenSpinner()
+//            }
+        }
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let searchWord = textField.text else { return false }
+        if searchWord.count < 2 {
+            makeSimpleAlert(title: "알림", content: "2자 이상 입력하세요")
+            return false
+        }
+
+        vm.getMovieInfos(word: searchWord) { errorTitle, errorMsg, result in
+            if result {
+                self.movieItemTableView.reloadData()
+            } else {
+                guard let title = errorTitle, let msg = errorMsg else { return }
+                self.makeSimpleAlert(title: title, content: msg)
+            }
+        }
+//        isSearch = true
+//
+//        setScreenSpinner()
+//        searchAction(searchWord: searchWord)
+//        vm.storeRecentSearchKeyword(keyword: searchWord)
+//        sendEvent(keyword: searchWord, method: .directly)
+//
+//        NotificationCenter.default.post(name: RecentSearchKeywordView.notiName, object: nil)
+
+        return true
     }
 }
