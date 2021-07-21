@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5163B62D46A1E3D02CC1A8E5 /* Pods_NaverMovieSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C4DFB600362DA51167AC47 /* Pods_NaverMovieSearch.framework */; };
 		D29A530126A79F9D003E5D00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29A530026A79F9D003E5D00 /* AppDelegate.swift */; };
 		D29A530326A79F9D003E5D00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29A530226A79F9D003E5D00 /* SceneDelegate.swift */; };
 		D29A530526A79F9D003E5D00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29A530426A79F9D003E5D00 /* ViewController.swift */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		89C4DFB600362DA51167AC47 /* Pods_NaverMovieSearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NaverMovieSearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		982F80C3488319D5330F2ABC /* Pods-NaverMovieSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaverMovieSearch.release.xcconfig"; path = "Target Support Files/Pods-NaverMovieSearch/Pods-NaverMovieSearch.release.xcconfig"; sourceTree = "<group>"; };
 		D29A52FD26A79F9D003E5D00 /* NaverMovieSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaverMovieSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D29A530026A79F9D003E5D00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D29A530226A79F9D003E5D00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		D29A530926A79F9F003E5D00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D29A530C26A79F9F003E5D00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D29A530E26A79F9F003E5D00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F917CB31A384A3631B50E995 /* Pods-NaverMovieSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaverMovieSearch.debug.xcconfig"; path = "Target Support Files/Pods-NaverMovieSearch/Pods-NaverMovieSearch.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5163B62D46A1E3D02CC1A8E5 /* Pods_NaverMovieSearch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58C46B201C87FC1EC6B7B2B0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				89C4DFB600362DA51167AC47 /* Pods_NaverMovieSearch.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6B03EB33EF32A2069753B63A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F917CB31A384A3631B50E995 /* Pods-NaverMovieSearch.debug.xcconfig */,
+				982F80C3488319D5330F2ABC /* Pods-NaverMovieSearch.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D29A52F426A79F9D003E5D00 = {
 			isa = PBXGroup;
 			children = (
 				D29A52FF26A79F9D003E5D00 /* NaverMovieSearch */,
 				D29A52FE26A79F9D003E5D00 /* Products */,
+				6B03EB33EF32A2069753B63A /* Pods */,
+				58C46B201C87FC1EC6B7B2B0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,9 +123,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D29A531126A79F9F003E5D00 /* Build configuration list for PBXNativeTarget "NaverMovieSearch" */;
 			buildPhases = (
+				FF40A4595132A70E42FB4BB8 /* [CP] Check Pods Manifest.lock */,
 				D29A52F926A79F9D003E5D00 /* Sources */,
 				D29A52FA26A79F9D003E5D00 /* Frameworks */,
 				D29A52FB26A79F9D003E5D00 /* Resources */,
+				A3D69F059DA190EE4135E5FA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -155,6 +182,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A3D69F059DA190EE4135E5FA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NaverMovieSearch/Pods-NaverMovieSearch-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NaverMovieSearch/Pods-NaverMovieSearch-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NaverMovieSearch/Pods-NaverMovieSearch-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF40A4595132A70E42FB4BB8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NaverMovieSearch-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D29A52F926A79F9D003E5D00 /* Sources */ = {
@@ -307,6 +376,7 @@
 		};
 		D29A531226A79F9F003E5D00 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F917CB31A384A3631B50E995 /* Pods-NaverMovieSearch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -328,6 +398,7 @@
 		};
 		D29A531326A79F9F003E5D00 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 982F80C3488319D5330F2ABC /* Pods-NaverMovieSearch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
