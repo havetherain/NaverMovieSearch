@@ -58,13 +58,37 @@
 			children = (
 				D29A530026A79F9D003E5D00 /* AppDelegate.swift */,
 				D29A530226A79F9D003E5D00 /* SceneDelegate.swift */,
-				D29A530426A79F9D003E5D00 /* ViewController.swift */,
-				D29A530626A79F9D003E5D00 /* Main.storyboard */,
-				D29A530926A79F9F003E5D00 /* Assets.xcassets */,
-				D29A530B26A79F9F003E5D00 /* LaunchScreen.storyboard */,
-				D29A530E26A79F9F003E5D00 /* Info.plist */,
+				D29A531626A7A0E5003E5D00 /* New Group */,
+				D29A531526A7A0CB003E5D00 /* Storyboard */,
+				D29A531426A7A0A4003E5D00 /* Resource */,
 			);
 			path = NaverMovieSearch;
+			sourceTree = "<group>";
+		};
+		D29A531426A7A0A4003E5D00 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				D29A530926A79F9F003E5D00 /* Assets.xcassets */,
+				D29A530E26A79F9F003E5D00 /* Info.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		D29A531526A7A0CB003E5D00 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				D29A530626A79F9D003E5D00 /* Main.storyboard */,
+				D29A530B26A79F9F003E5D00 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		D29A531626A7A0E5003E5D00 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				D29A530426A79F9D003E5D00 /* ViewController.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,12 +311,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = SQ839AG54C;
 				INFOPLIST_FILE = NaverMovieSearch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = havetherain.NaverMovieSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -306,12 +332,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = SQ839AG54C;
 				INFOPLIST_FILE = NaverMovieSearch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = havetherain.NaverMovieSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
