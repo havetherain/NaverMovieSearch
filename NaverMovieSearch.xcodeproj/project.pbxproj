@@ -14,6 +14,7 @@
 		D29A530826A79F9D003E5D00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D29A530626A79F9D003E5D00 /* Main.storyboard */; };
 		D29A530A26A79F9F003E5D00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D29A530926A79F9F003E5D00 /* Assets.xcassets */; };
 		D29A530D26A79F9F003E5D00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D29A530B26A79F9F003E5D00 /* LaunchScreen.storyboard */; };
+		D29A531B26A7AB69003E5D00 /* APIKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = D29A531A26A7AB69003E5D00 /* APIKey.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		D29A530926A79F9F003E5D00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D29A530C26A79F9F003E5D00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D29A530E26A79F9F003E5D00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D29A531A26A7AB69003E5D00 /* APIKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKey.plist; sourceTree = "<group>"; };
 		F917CB31A384A3631B50E995 /* Pods-NaverMovieSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaverMovieSearch.debug.xcconfig"; path = "Target Support Files/Pods-NaverMovieSearch/Pods-NaverMovieSearch.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +96,7 @@
 			children = (
 				D29A530926A79F9F003E5D00 /* Assets.xcassets */,
 				D29A530E26A79F9F003E5D00 /* Info.plist */,
+				D29A531A26A7AB69003E5D00 /* APIKey.plist */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D29A530D26A79F9F003E5D00 /* LaunchScreen.storyboard in Resources */,
+				D29A531B26A7AB69003E5D00 /* APIKey.plist in Resources */,
 				D29A530A26A79F9F003E5D00 /* Assets.xcassets in Resources */,
 				D29A530826A79F9D003E5D00 /* Main.storyboard in Resources */,
 			);

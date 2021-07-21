@@ -128,6 +128,9 @@ fastlane/test_output
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 
+### API Key ###
+NaverMovieSearch/Resource/APIKey.plist
+
 
 # End of https://www.gitignore.io/api/swift,xcode,macos,cocoapods
 
