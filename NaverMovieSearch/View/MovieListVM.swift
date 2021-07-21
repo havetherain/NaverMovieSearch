@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+final class MovieListVM {
+    var movieItems: MovieItems = []
+
+    func getMovieInfos(word: String, completion: @escaping () -> Void) {
+        
+    }
+}
