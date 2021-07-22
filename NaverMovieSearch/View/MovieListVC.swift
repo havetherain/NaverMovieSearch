@@ -58,7 +58,10 @@ class MovieListVC: UIViewController {
 
         movieItemTableView.delegate = self
         movieItemTableView.dataSource = self
-        movieItemTableView.separatorStyle = .none
+        movieItemTableView.separatorInset = UIEdgeInsets(top: 0.0, left: 16.0, bottom: 0.0, right: 16.0)
+
+        let footerView: UIView = UIView()
+        movieItemTableView.tableFooterView = footerView
 
         searchTextField.delegate = self
     }
@@ -97,6 +100,10 @@ class MovieListVC: UIViewController {
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+   }
 }
 
 extension MovieListVC: UITableViewDelegate, UITableViewDataSource {
@@ -113,6 +120,7 @@ extension MovieListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let movieInfoDetailVC = MovieInfoDetailVC(movieItem: vm.movieItems[indexPath.item])
         navigationController?.pushViewController(movieInfoDetailVC, animated: true)
+        searchTextField.endEditing(true)
     }
 }
 

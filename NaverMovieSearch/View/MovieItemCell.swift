@@ -91,7 +91,7 @@ final class MovieItemCell: UITableViewCell {
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(8.0)
             $0.leading.equalTo(posterImageView.snp.trailing).offset(8.0)
-            $0.trailing.lessThanOrEqualToSuperview().inset(6.0)
+            $0.trailing.lessThanOrEqualToSuperview().inset(16.0)
         }
 
         contentView.addSubview(directorTitleLabel)
@@ -104,7 +104,7 @@ final class MovieItemCell: UITableViewCell {
         directorLabel.snp.makeConstraints {
             $0.centerY.equalTo(directorTitleLabel)
             $0.leading.equalTo(directorTitleLabel.snp.trailing).offset(6.0)
-            $0.trailing.lessThanOrEqualToSuperview().inset(6.0)
+            $0.trailing.lessThanOrEqualToSuperview().inset(16.0)
         }
 
         contentView.addSubview(actorTitleLabel)
@@ -117,7 +117,7 @@ final class MovieItemCell: UITableViewCell {
         actorLabel.snp.makeConstraints {
             $0.centerY.equalTo(actorTitleLabel)
             $0.leading.equalTo(actorTitleLabel.snp.trailing).offset(6.0)
-            $0.trailing.lessThanOrEqualToSuperview().inset(6.0)
+            $0.trailing.lessThanOrEqualToSuperview().inset(16.0)
         }
 
         contentView.addSubview(ratingTitleLabel)
@@ -131,7 +131,7 @@ final class MovieItemCell: UITableViewCell {
         ratingLabel.snp.makeConstraints {
             $0.centerY.equalTo(ratingTitleLabel)
             $0.leading.equalTo(ratingTitleLabel.snp.trailing).offset(6.0)
-            $0.trailing.lessThanOrEqualToSuperview().inset(6.0)
+            $0.trailing.lessThanOrEqualToSuperview().inset(16.0)
         }
     }
 
