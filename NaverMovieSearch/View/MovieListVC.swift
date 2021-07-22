@@ -38,7 +38,6 @@ class MovieListVC: UIViewController {
 
     private let movieItemTableView: UITableView = UITableView().then {
         $0.backgroundColor = .white
-        $0.separatorStyle = .none
 
         $0.register(MovieItemCell.self, forCellReuseIdentifier: "MovieItemCell")
         $0.rowHeight = 94.5
@@ -59,6 +58,7 @@ class MovieListVC: UIViewController {
 
         movieItemTableView.delegate = self
         movieItemTableView.dataSource = self
+        movieItemTableView.separatorStyle = .none
 
         searchTextField.delegate = self
     }
@@ -108,6 +108,11 @@ extension MovieListVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieItemCell", for: indexPath) as! MovieItemCell
         cell.configue(data: vm.movieItems[indexPath.item])
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let movieInfoDetailVC = MovieInfoDetailVC(movieItem: vm.movieItems[indexPath.item])
+        navigationController?.pushViewController(movieInfoDetailVC, animated: true)
     }
 }
 
