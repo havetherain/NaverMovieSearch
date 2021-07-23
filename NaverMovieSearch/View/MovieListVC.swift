@@ -19,6 +19,17 @@ class MovieListVC: UIViewController {
 
         $0.text = "네이버 영화 검색"
     }
+    
+    private let moveFavoriteListBtn: UIButton = UIButton().then {
+        $0.setImage(UIImage(named: "ic_favorite_star_select"), for: .normal)
+        $0.setTitle("즐겨찾기", for: .normal)
+        $0.setTitleColor(.black, for: .normal)
+        $0.backgroundColor = .white
+        $0.layer.borderColor = UIColor("#F0F0F0").cgColor
+        $0.layer.borderWidth = 1.0
+        
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 13.0, weight: .regular)
+    }
 
     private let divideLineView: UIView = UIView().then {
         $0.backgroundColor = UIColor("#EEEEEE")
@@ -83,6 +94,14 @@ class MovieListVC: UIViewController {
             $0.top.bottom.equalToSuperview()
             $0.leading.equalToSuperview().offset(16.0)
         }
+        
+        navigationView.addSubview(moveFavoriteListBtn)
+        moveFavoriteListBtn.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview().inset(10.0)
+            $0.trailing.equalToSuperview().inset(16.0)
+            $0.width.equalTo(80.0)
+        }
+        moveFavoriteListBtn.addTarget(self, action: #selector(didTapMoveFavoriteMovieListBtn), for: .touchUpInside)
 
         navigationView.addSubview(divideLineView)
         divideLineView.snp.makeConstraints {
@@ -111,6 +130,17 @@ class MovieListVC: UIViewController {
     
     @objc func tableViewReloadData() {
         movieItemTableView.reloadData()
+    }
+    
+    @objc func didTapMoveFavoriteMovieListBtn() {
+        let favoriteMovieListVC = FavoriteMovieListVC()
+        let navAboutFavoriteMovieListVC = UINavigationController(rootViewController: favoriteMovieListVC)
+        
+        navAboutFavoriteMovieListVC.view.backgroundColor = .white
+        navAboutFavoriteMovieListVC.setNavigationBarHidden(true, animated: false)
+        navAboutFavoriteMovieListVC.modalPresentationStyle = .fullScreen
+        
+        present(navAboutFavoriteMovieListVC, animated: true, completion: nil)
     }
 }
 

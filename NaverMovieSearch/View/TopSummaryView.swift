@@ -159,7 +159,7 @@ final class TopSummaryView: UIView {
         if let data = self.data {
             data.favorite = sender.isSelected
             if let index = MovieListVM.favoriteMovieItems.firstIndex(where: { $0.link == data.link }) {
-                MovieListVM.favoriteMovieItems[index] = data
+                MovieListVM.favoriteMovieItems.remove(at: index)
             } else {
                 MovieListVM.favoriteMovieItems.append(data)
             }
@@ -188,8 +188,8 @@ final class TopSummaryView: UIView {
         }
         ratingLabel.text = data.userRating.safelyUnwrapped
         
-        if let index = MovieListVM.favoriteMovieItems.firstIndex(where: { $0.link == data.link }) {
-            favoriteBtn.isSelected = MovieListVM.favoriteMovieItems[index].favorite
+        if MovieListVM.favoriteMovieItems.contains(where: { $0.link == data.link }) {
+            favoriteBtn.isSelected = true
         } else {
             favoriteBtn.isSelected = false
         }
