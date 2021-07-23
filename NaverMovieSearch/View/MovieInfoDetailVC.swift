@@ -56,6 +56,7 @@ class MovieInfoDetailVC: UIViewController {
 
     init(movieItem: MovieItemVO) {
         self.movieItem = movieItem
+        self.topSummaryView.data = movieItem
         super.init(nibName: nil, bundle: nil)
     }
 

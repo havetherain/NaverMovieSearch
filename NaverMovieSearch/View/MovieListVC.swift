@@ -19,6 +19,17 @@ class MovieListVC: UIViewController {
 
         $0.text = "네이버 영화 검색"
     }
+    
+    private let moveFavoriteListBtn: UIButton = UIButton().then {
+        $0.setImage(UIImage(named: "ic_favorite_star_select"), for: .normal)
+        $0.setTitle("즐겨찾기", for: .normal)
+        $0.setTitleColor(.black, for: .normal)
+        $0.backgroundColor = .white
+        $0.layer.borderColor = UIColor("#F0F0F0").cgColor
+        $0.layer.borderWidth = 1.0
+        
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 13.0, weight: .regular)
+    }
 
     private let divideLineView: UIView = UIView().then {
         $0.backgroundColor = UIColor("#EEEEEE")
@@ -32,8 +43,6 @@ class MovieListVC: UIViewController {
         $0.clearButtonMode = .whileEditing
         $0.returnKeyType = .search
         $0.autocapitalizationType = .none
-
-//        $0.addTarget(self, action: #selector(textFieldDidEditingChanged(_:)), for: .editingChanged)
     }
 
     private let movieItemTableView: UITableView = UITableView().then {
@@ -45,12 +54,18 @@ class MovieListVC: UIViewController {
 
     let vm: MovieListVM = MovieListVM()
     var searchTimer: Timer?
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name(rawValue: "movieListReload"), object: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setAttributes()
         makeConstraints()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(tableViewReloadData), name: Notification.Name(rawValue: "movieListReload"), object: nil)
     }
 
     private func setAttributes() {
@@ -58,7 +73,10 @@ class MovieListVC: UIViewController {
 
         movieItemTableView.delegate = self
         movieItemTableView.dataSource = self
-        movieItemTableView.separatorStyle = .none
+        movieItemTableView.separatorInset = UIEdgeInsets(top: 0.0, left: 16.0, bottom: 0.0, right: 16.0)
+
+        let footerView: UIView = UIView()
+        movieItemTableView.tableFooterView = footerView
 
         searchTextField.delegate = self
     }
@@ -76,6 +94,14 @@ class MovieListVC: UIViewController {
             $0.top.bottom.equalToSuperview()
             $0.leading.equalToSuperview().offset(16.0)
         }
+        
+        navigationView.addSubview(moveFavoriteListBtn)
+        moveFavoriteListBtn.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview().inset(10.0)
+            $0.trailing.equalToSuperview().inset(16.0)
+            $0.width.equalTo(80.0)
+        }
+        moveFavoriteListBtn.addTarget(self, action: #selector(didTapMoveFavoriteMovieListBtn), for: .touchUpInside)
 
         navigationView.addSubview(divideLineView)
         divideLineView.snp.makeConstraints {
@@ -97,6 +123,25 @@ class MovieListVC: UIViewController {
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+   }
+    
+    @objc func tableViewReloadData() {
+        movieItemTableView.reloadData()
+    }
+    
+    @objc func didTapMoveFavoriteMovieListBtn() {
+        let favoriteMovieListVC = FavoriteMovieListVC()
+        let navAboutFavoriteMovieListVC = UINavigationController(rootViewController: favoriteMovieListVC)
+        
+        navAboutFavoriteMovieListVC.view.backgroundColor = .white
+        navAboutFavoriteMovieListVC.setNavigationBarHidden(true, animated: false)
+        navAboutFavoriteMovieListVC.modalPresentationStyle = .fullScreen
+        
+        present(navAboutFavoriteMovieListVC, animated: true, completion: nil)
+    }
 }
 
 extension MovieListVC: UITableViewDelegate, UITableViewDataSource {
@@ -113,53 +158,11 @@ extension MovieListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let movieInfoDetailVC = MovieInfoDetailVC(movieItem: vm.movieItems[indexPath.item])
         navigationController?.pushViewController(movieInfoDetailVC, animated: true)
+        searchTextField.endEditing(true)
     }
 }
 
 extension MovieListVC: UITextFieldDelegate {
-    @objc func textFieldDidEditingChanged(_ textField: UITextField) {
-        guard let text = textField.text else { return }
-
-        if searchTimer != nil {
-            searchTimer?.invalidate()
-            searchTimer = nil
-        }
-
-        searchTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(searchForKeyword(_:)), userInfo: text, repeats: false)
-    }
-
-    @objc func searchForKeyword(_ timer: Timer) {
-//        if isSearch {
-//            isSearch = false
-//            return
-//        }
-//
-        guard let searchWord = timer.userInfo as? String else { return }
-
-        if searchWord.count == 0 {
-//            recommendContainerView.isHidden = false
-//            recommendCompanyNameTableView.isHidden = true
-//            searchResultRecruitPagerVC.view.isHidden = true
-        } else {
-//            setScreenSpinner()
-
-//            vm.getCompanyGroupName(searchWord: searchWord) {
-//                if self.vm.companyGroups.count == 0 {
-//                    self.recommendContainerView.isHidden = false
-//                    self.recommendCompanyNameTableView.isHidden = true
-//                    self.searchResultRecruitPagerVC.view.isHidden = true
-//                } else {
-//                    self.recommendContainerView.isHidden = true
-//                    self.recommendCompanyNameTableView.isHidden = false
-//                    self.searchResultRecruitPagerVC.view.isHidden = true
-//                }
-//
-//                self.recommendCompanyNameTableView.reloadData()
-//                self.removeScreenSpinner()
-//            }
-        }
-    }
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let searchWord = textField.text else { return false }
         if searchWord.count < 2 {
@@ -175,15 +178,6 @@ extension MovieListVC: UITextFieldDelegate {
                 self.makeSimpleAlert(title: title, content: msg)
             }
         }
-//        isSearch = true
-//
-//        setScreenSpinner()
-//        searchAction(searchWord: searchWord)
-//        vm.storeRecentSearchKeyword(keyword: searchWord)
-//        sendEvent(keyword: searchWord, method: .directly)
-//
-//        NotificationCenter.default.post(name: RecentSearchKeywordView.notiName, object: nil)
-
         return true
     }
 }

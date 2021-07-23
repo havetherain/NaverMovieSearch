@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5163B62D46A1E3D02CC1A8E5 /* Pods_NaverMovieSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C4DFB600362DA51167AC47 /* Pods_NaverMovieSearch.framework */; };
+		D2548CB226AA3B4F00093C33 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2548CB126AA3B4F00093C33 /* GradientButton.swift */; };
+		D2548CB426AA51C600093C33 /* FavoriteMovieListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2548CB326AA51C600093C33 /* FavoriteMovieListVC.swift */; };
 		D29A530126A79F9D003E5D00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29A530026A79F9D003E5D00 /* AppDelegate.swift */; };
 		D29A530326A79F9D003E5D00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29A530226A79F9D003E5D00 /* SceneDelegate.swift */; };
 		D29A530526A79F9D003E5D00 /* MovieListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29A530426A79F9D003E5D00 /* MovieListVC.swift */; };
@@ -32,6 +34,8 @@
 /* Begin PBXFileReference section */
 		89C4DFB600362DA51167AC47 /* Pods_NaverMovieSearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NaverMovieSearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		982F80C3488319D5330F2ABC /* Pods-NaverMovieSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaverMovieSearch.release.xcconfig"; path = "Target Support Files/Pods-NaverMovieSearch/Pods-NaverMovieSearch.release.xcconfig"; sourceTree = "<group>"; };
+		D2548CB126AA3B4F00093C33 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
+		D2548CB326AA51C600093C33 /* FavoriteMovieListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovieListVC.swift; sourceTree = "<group>"; };
 		D29A52FD26A79F9D003E5D00 /* NaverMovieSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaverMovieSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D29A530026A79F9D003E5D00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D29A530226A79F9D003E5D00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				D29A530426A79F9D003E5D00 /* MovieListVC.swift */,
+				D2548CB326AA51C600093C33 /* FavoriteMovieListVC.swift */,
 				D29A533126A7CC64003E5D00 /* MovieListVM.swift */,
 				D29A532C26A7C481003E5D00 /* MovieItemCell.swift */,
 				D2C079B826A8EB8C0022968F /* TopSummaryView.swift */,
@@ -165,6 +170,7 @@
 				D29A532A26A7C108003E5D00 /* UIKit_Extension.swift */,
 				D2C079B426A7FC0A0022968F /* Foundation_Extension.swift */,
 				D2C079BA26A8FDF60022968F /* InteractivPopRecognizer.swift */,
+				D2548CB126AA3B4F00093C33 /* GradientButton.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -299,9 +305,11 @@
 				D2C079B726A8E3510022968F /* MovieInfoDetailVC.swift in Sources */,
 				D29A532B26A7C108003E5D00 /* UIKit_Extension.swift in Sources */,
 				D2C079B126A7F3FC0022968F /* MovieSearchService.swift in Sources */,
+				D2548CB426AA51C600093C33 /* FavoriteMovieListVC.swift in Sources */,
 				D2C079BB26A8FDF60022968F /* InteractivPopRecognizer.swift in Sources */,
 				D2C079B526A7FC0A0022968F /* Foundation_Extension.swift in Sources */,
 				D29A533226A7CC64003E5D00 /* MovieListVM.swift in Sources */,
+				D2548CB226AA3B4F00093C33 /* GradientButton.swift in Sources */,
 				D29A530526A79F9D003E5D00 /* MovieListVC.swift in Sources */,
 				D29A532926A7B2DD003E5D00 /* NaverMovieAPIResponseData.swift in Sources */,
 				D29A530126A79F9D003E5D00 /* AppDelegate.swift in Sources */,

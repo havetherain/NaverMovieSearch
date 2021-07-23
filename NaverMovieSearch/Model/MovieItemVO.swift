@@ -7,13 +7,15 @@
 
 import Foundation
 
-struct MovieItemVO: Codable {
+class MovieItemVO: Codable {
     let title: String?
     let link: String?
     let image: String?
     let director: String?
     let actor: String?
     let userRating: String?
+    
+    var favorite: Bool = false
 
     enum CodingKeys: String, CodingKey {
         case title, link, image, director, actor, userRating

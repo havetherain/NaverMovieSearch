@@ -10,6 +10,7 @@ import Foundation
 final class MovieListVM {
     internal let naverAPI = "https://openapi.naver.com/v1/search/movie.json"
     var movieItems: MovieItems = []
+    static var favoriteMovieItems: MovieItems = []
 
     func getMovieInfos(word: String, completion: @escaping (String?, String?, Bool) -> Void) {
         let parameters = ["query": word, "display": 50] as [String : Any]
