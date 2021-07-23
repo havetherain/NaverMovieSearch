@@ -32,8 +32,6 @@ class MovieListVC: UIViewController {
         $0.clearButtonMode = .whileEditing
         $0.returnKeyType = .search
         $0.autocapitalizationType = .none
-
-//        $0.addTarget(self, action: #selector(textFieldDidEditingChanged(_:)), for: .editingChanged)
     }
 
     private let movieItemTableView: UITableView = UITableView().then {
@@ -45,12 +43,18 @@ class MovieListVC: UIViewController {
 
     let vm: MovieListVM = MovieListVM()
     var searchTimer: Timer?
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name(rawValue: "movieListReload"), object: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setAttributes()
         makeConstraints()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(tableViewReloadData), name: Notification.Name(rawValue: "movieListReload"), object: nil)
     }
 
     private func setAttributes() {
@@ -104,6 +108,10 @@ class MovieListVC: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
    }
+    
+    @objc func tableViewReloadData() {
+        movieItemTableView.reloadData()
+    }
 }
 
 extension MovieListVC: UITableViewDelegate, UITableViewDataSource {
@@ -125,49 +133,6 @@ extension MovieListVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension MovieListVC: UITextFieldDelegate {
-    @objc func textFieldDidEditingChanged(_ textField: UITextField) {
-        guard let text = textField.text else { return }
-
-        if searchTimer != nil {
-            searchTimer?.invalidate()
-            searchTimer = nil
-        }
-
-        searchTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(searchForKeyword(_:)), userInfo: text, repeats: false)
-    }
-
-    @objc func searchForKeyword(_ timer: Timer) {
-//        if isSearch {
-//            isSearch = false
-//            return
-//        }
-//
-        guard let searchWord = timer.userInfo as? String else { return }
-
-        if searchWord.count == 0 {
-//            recommendContainerView.isHidden = false
-//            recommendCompanyNameTableView.isHidden = true
-//            searchResultRecruitPagerVC.view.isHidden = true
-        } else {
-//            setScreenSpinner()
-
-//            vm.getCompanyGroupName(searchWord: searchWord) {
-//                if self.vm.companyGroups.count == 0 {
-//                    self.recommendContainerView.isHidden = false
-//                    self.recommendCompanyNameTableView.isHidden = true
-//                    self.searchResultRecruitPagerVC.view.isHidden = true
-//                } else {
-//                    self.recommendContainerView.isHidden = true
-//                    self.recommendCompanyNameTableView.isHidden = false
-//                    self.searchResultRecruitPagerVC.view.isHidden = true
-//                }
-//
-//                self.recommendCompanyNameTableView.reloadData()
-//                self.removeScreenSpinner()
-//            }
-        }
-    }
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let searchWord = textField.text else { return false }
         if searchWord.count < 2 {
@@ -183,15 +148,6 @@ extension MovieListVC: UITextFieldDelegate {
                 self.makeSimpleAlert(title: title, content: msg)
             }
         }
-//        isSearch = true
-//
-//        setScreenSpinner()
-//        searchAction(searchWord: searchWord)
-//        vm.storeRecentSearchKeyword(keyword: searchWord)
-//        sendEvent(keyword: searchWord, method: .directly)
-//
-//        NotificationCenter.default.post(name: RecentSearchKeywordView.notiName, object: nil)
-
         return true
     }
 }

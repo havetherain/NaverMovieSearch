@@ -61,6 +61,15 @@ final class TopSummaryView: UIView {
 
         $0.numberOfLines = 1
     }
+    
+    private let favoriteBtn: GradientButton = GradientButton().then {
+        $0.setImage(UIImage(named: "ic_favorite_star"), for: .normal)
+        $0.setImage(UIImage(named: "ic_favorite_star_select"), for: .selected)
+        $0.contentHorizontalAlignment = .right
+        $0.imageEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 16.0)
+    }
+    
+    var data: MovieItemVO?
 
     init() {
         super.init(frame: .zero)
@@ -71,6 +80,11 @@ final class TopSummaryView: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        favoriteBtn.addTarget(self, action: #selector(didTapFavoritButton(_:)), for: .touchUpInside)
     }
 
     private func makeConstraints() {
@@ -87,38 +101,48 @@ final class TopSummaryView: UIView {
             $0.leading.equalToSuperview().inset(16.0)
             $0.width.equalTo(60.0)
         }
+        
+        addSubview(favoriteBtn)
+        favoriteBtn.snp.makeConstraints {
+            $0.top.equalTo(divideView.snp.bottom)
+            $0.trailing.equalToSuperview()
+            $0.width.height.equalTo(40.0)
+        }
 
         addSubview(directorTitleLabel)
         directorTitleLabel.snp.makeConstraints {
             $0.top.equalTo(divideView.snp.bottom).offset(12.0)
             $0.leading.equalTo(posterImageView.snp.trailing).offset(8.0)
+            $0.width.equalTo(28.5)
         }
 
         addSubview(directorLabel)
         directorLabel.snp.makeConstraints {
             $0.centerY.equalTo(directorTitleLabel)
             $0.leading.equalTo(directorTitleLabel.snp.trailing).offset(6.0)
-            $0.trailing.lessThanOrEqualToSuperview().inset(6.0)
+            $0.trailing.lessThanOrEqualToSuperview().inset(40.0)
         }
 
         addSubview(actorTitleLabel)
         actorTitleLabel.snp.makeConstraints {
             $0.top.equalTo(directorLabel.snp.bottom).offset(6.0)
-            $0.leading.equalTo(posterImageView.snp.trailing).offset(8.0)
+            $0.leading.equalTo(directorTitleLabel)
+            $0.width.equalTo(28.5)
         }
 
         addSubview(actorLabel)
         actorLabel.snp.makeConstraints {
             $0.centerY.equalTo(actorTitleLabel)
             $0.leading.equalTo(actorTitleLabel.snp.trailing).offset(6.0)
-            $0.trailing.lessThanOrEqualToSuperview().inset(6.0)
+            $0.trailing.lessThanOrEqualToSuperview().inset(40.0)
         }
 
         addSubview(ratingTitleLabel)
         ratingTitleLabel.snp.makeConstraints {
             $0.top.equalTo(actorTitleLabel.snp.bottom).offset(6.0)
-            $0.leading.equalTo(posterImageView.snp.trailing).offset(8.0)
+            $0.leading.equalTo(directorTitleLabel)
             $0.bottom.equalToSuperview().inset(12.0)
+            $0.width.equalTo(28.5)
         }
 
         addSubview(ratingLabel)
@@ -126,6 +150,21 @@ final class TopSummaryView: UIView {
             $0.centerY.equalTo(ratingTitleLabel)
             $0.leading.equalTo(ratingTitleLabel.snp.trailing).offset(6.0)
             $0.trailing.lessThanOrEqualToSuperview().inset(6.0)
+        }
+    }
+    
+    @objc func didTapFavoritButton(_ sender: UIButton) {
+        sender.isSelected.toggle()
+        
+        if let data = self.data {
+            data.favorite = sender.isSelected
+            if let index = MovieListVM.favoriteMovieItems.firstIndex(where: { $0.link == data.link }) {
+                MovieListVM.favoriteMovieItems[index] = data
+            } else {
+                MovieListVM.favoriteMovieItems.append(data)
+            }
+            
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "movieListReload"), object: nil)
         }
     }
 
@@ -148,5 +187,11 @@ final class TopSummaryView: UIView {
             actorLabel.text = actors.joined()
         }
         ratingLabel.text = data.userRating.safelyUnwrapped
+        
+        if let index = MovieListVM.favoriteMovieItems.firstIndex(where: { $0.link == data.link }) {
+            favoriteBtn.isSelected = MovieListVM.favoriteMovieItems[index].favorite
+        } else {
+            favoriteBtn.isSelected = false
+        }
     }
 }

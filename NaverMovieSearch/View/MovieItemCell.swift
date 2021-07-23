@@ -62,6 +62,15 @@ final class MovieItemCell: UITableViewCell {
 
         $0.numberOfLines = 1
     }
+    
+    private let favoriteBtn: GradientButton = GradientButton().then {
+        $0.setImage(UIImage(named: "ic_favorite_star"), for: .normal)
+        $0.setImage(UIImage(named: "ic_favorite_star_select"), for: .selected)
+        $0.contentHorizontalAlignment = .right
+        $0.imageEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 16.0)
+    }
+    
+    var data: MovieItemVO?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -72,6 +81,11 @@ final class MovieItemCell: UITableViewCell {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        favoriteBtn.addTarget(self, action: #selector(didTapFavoritButton(_:)), for: .touchUpInside)
     }
 
     private func setAttributes() {
@@ -91,13 +105,20 @@ final class MovieItemCell: UITableViewCell {
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(8.0)
             $0.leading.equalTo(posterImageView.snp.trailing).offset(8.0)
-            $0.trailing.lessThanOrEqualToSuperview().inset(16.0)
+            $0.trailing.lessThanOrEqualToSuperview().inset(40.0)
+        }
+        
+        contentView.addSubview(favoriteBtn)
+        favoriteBtn.snp.makeConstraints {
+            $0.top.trailing.equalToSuperview()
+            $0.width.height.equalTo(40.0)
         }
 
         contentView.addSubview(directorTitleLabel)
         directorTitleLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(4.0)
             $0.leading.equalTo(titleLabel.snp.leading)
+            $0.width.equalTo(28.5)
         }
 
         contentView.addSubview(directorLabel)
@@ -111,6 +132,7 @@ final class MovieItemCell: UITableViewCell {
         actorTitleLabel.snp.makeConstraints {
             $0.top.equalTo(directorLabel.snp.bottom).offset(6.0)
             $0.leading.equalTo(titleLabel.snp.leading)
+            $0.width.equalTo(28.5)
         }
 
         contentView.addSubview(actorLabel)
@@ -125,6 +147,7 @@ final class MovieItemCell: UITableViewCell {
             $0.top.equalTo(actorTitleLabel.snp.bottom).offset(4.0)
             $0.leading.equalTo(titleLabel.snp.leading)
             $0.bottom.equalToSuperview().inset(4.0)
+            $0.width.equalTo(28.5)
         }
 
         contentView.addSubview(ratingLabel)
@@ -134,8 +157,22 @@ final class MovieItemCell: UITableViewCell {
             $0.trailing.lessThanOrEqualToSuperview().inset(16.0)
         }
     }
+    
+    @objc func didTapFavoritButton(_ sender: UIButton) {
+        sender.isSelected.toggle()
+        
+        if let data = self.data {
+            data.favorite = sender.isSelected
+            if let index = MovieListVM.favoriteMovieItems.firstIndex(where: { $0.link == data.link }) {
+                MovieListVM.favoriteMovieItems[index] = data
+            } else {
+                MovieListVM.favoriteMovieItems.append(data)
+            }
+        }
+    }
 
     func configue(data: MovieItemVO) {
+        self.data = data
         posterImageView.setImageFromUrl(data.image.safelyUnwrapped)
 
         var title: String = data.title.safelyUnwrapped
@@ -160,5 +197,11 @@ final class MovieItemCell: UITableViewCell {
             actorLabel.text = actors.joined()
         }
         ratingLabel.text = data.userRating.safelyUnwrapped
+        
+        if let index = MovieListVM.favoriteMovieItems.firstIndex(where: { $0.link == data.link }) {
+            favoriteBtn.isSelected = MovieListVM.favoriteMovieItems[index].favorite
+        } else {
+            favoriteBtn.isSelected = false
+        }
     }
 }
