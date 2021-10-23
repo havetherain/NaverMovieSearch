@@ -17,6 +17,12 @@ extension UIViewController {
     }
 }
 
+extension UINavigationController {
+    public func setEnableSwipeBack() {
+        interactivePopGestureRecognizer?.delegate = nil
+    }
+}
+
 extension UIColor {
     convenience init(_ hex: String) {
         let hexString = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)

@@ -10,8 +10,6 @@ import SnapKit
 import Then
 
 class MovieInfoDetailVC: UIViewController {
-    private let popRecognizer: InteractivePopRecognizer = InteractivePopRecognizer()
-
     private let navigationView: UIView = UIView().then {
         $0.backgroundColor = .white
     }
@@ -66,9 +64,6 @@ class MovieInfoDetailVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        guard let nav = navigationController else { return }
-        popRecognizer.setInteractiveRecognizer(controller: nav)
 
         view.backgroundColor = .white
 
