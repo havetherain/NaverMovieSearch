@@ -6,29 +6,33 @@
 //
 
 import Foundation
+import Moya
 
 final class MovieListVM {
-    internal let naverAPI = "https://openapi.naver.com/v1/search/movie.json"
     var movieItems: MovieItems = []
     static var favoriteMovieItems: MovieItems = []
 
-    func getMovieInfos(word: String, completion: @escaping (String?, String?, Bool) -> Void) {
-        let parameters = ["query": word, "display": 50] as [String : Any]
-        MoiveSearchService.sharedInstance.fetchMovieList(url: naverAPI, params: parameters) { result in
+    func getMovies(word: String, displayCount: Int = 50, completion: @escaping (String?, String?, Bool) -> Void) {
+        let provider = MoyaProvider<NaverMovies>()
+        provider.request(.movies(word, displayCount)) { result in
             switch result {
-            case .networkSuccess(let movieListResponseData):
-                guard let movieListResponseData = movieListResponseData as? NaverMovieAPIResponseData,
-                      let movieItems = movieListResponseData.items else {
-                    return completion("오류", "데이터 없음", false)
+            case let .success(response):
+                do {
+                    let naverMovieAPIResponseData = try response.map(NaverMovieAPIResponseData.self)
+                    guard let movieItems = naverMovieAPIResponseData.items, movieItems.count > 0 else {
+                        return completion("안내", "검색 결과 없음", false)
+                    }
+
+                    self.movieItems = movieItems
+
+                    completion(nil, nil, true)
+                } catch let error {
+                    print(error.localizedDescription)
+                    completion("Error", "Data Decode Error", false)
                 }
-
-                self.movieItems = movieItems
-
-                completion(nil, nil, true)
-            case .networkFail:
-                completion("오류", "네트워크 상태를 확인해주세요", false)
-            case .networkError((_, let errorMsg)):
-                completion("오류", errorMsg, false)
+            case let .failure(error):
+                print(error.localizedDescription)
+                completion("Error", "Network Error", false)
             }
         }
     }

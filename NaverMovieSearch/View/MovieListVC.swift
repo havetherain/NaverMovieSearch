@@ -71,6 +71,8 @@ class MovieListVC: UIViewController {
     private func setAttributes() {
         view.backgroundColor = .white
 
+        navigationController?.setEnableSwipeBack()
+
         movieItemTableView.delegate = self
         movieItemTableView.dataSource = self
         movieItemTableView.separatorInset = UIEdgeInsets(top: 0.0, left: 16.0, bottom: 0.0, right: 16.0)
@@ -135,7 +137,8 @@ class MovieListVC: UIViewController {
     @objc func didTapMoveFavoriteMovieListBtn() {
         let favoriteMovieListVC = FavoriteMovieListVC()
         let navAboutFavoriteMovieListVC = UINavigationController(rootViewController: favoriteMovieListVC)
-        
+
+        navAboutFavoriteMovieListVC.setEnableSwipeBack()
         navAboutFavoriteMovieListVC.view.backgroundColor = .white
         navAboutFavoriteMovieListVC.setNavigationBarHidden(true, animated: false)
         navAboutFavoriteMovieListVC.modalPresentationStyle = .fullScreen
@@ -170,7 +173,7 @@ extension MovieListVC: UITextFieldDelegate {
             return false
         }
 
-        vm.getMovieInfos(word: searchWord) { errorTitle, errorMsg, result in
+        vm.getMovies(word: searchWord) { errorTitle, errorMsg, result in
             if result {
                 self.movieItemTableView.reloadData()
             } else {
@@ -178,6 +181,7 @@ extension MovieListVC: UITextFieldDelegate {
                 self.makeSimpleAlert(title: title, content: msg)
             }
         }
+
         return true
     }
 }
