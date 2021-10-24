@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5163B62D46A1E3D02CC1A8E5 /* Pods_NaverMovieSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C4DFB600362DA51167AC47 /* Pods_NaverMovieSearch.framework */; };
+		D2055E2E2723E53400159EB3 /* MoyaNaverMovieAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2055E2D2723E53400159EB3 /* MoyaNaverMovieAPI.swift */; };
 		D2548CB226AA3B4F00093C33 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2548CB126AA3B4F00093C33 /* GradientButton.swift */; };
 		D29A530126A79F9D003E5D00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29A530026A79F9D003E5D00 /* AppDelegate.swift */; };
 		D29A530326A79F9D003E5D00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29A530226A79F9D003E5D00 /* SceneDelegate.swift */; };
@@ -19,7 +20,6 @@
 		D29A532126A7ACC7003E5D00 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29A532026A7ACC7003E5D00 /* NetworkResult.swift */; };
 		D29A532326A7ACD0003E5D00 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29A532226A7ACD0003E5D00 /* NetworkService.swift */; };
 		D29A532726A7B216003E5D00 /* MovieItemVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29A532626A7B216003E5D00 /* MovieItemVO.swift */; };
-		D29A532926A7B2DD003E5D00 /* NaverMovieAPIResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29A532826A7B2DD003E5D00 /* NaverMovieAPIResponseData.swift */; };
 		D29A532B26A7C108003E5D00 /* UIKit_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29A532A26A7C108003E5D00 /* UIKit_Extension.swift */; };
 		D29A532D26A7C481003E5D00 /* MovieItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29A532C26A7C481003E5D00 /* MovieItemCell.swift */; };
 		D29A533226A7CC64003E5D00 /* MovieListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29A533126A7CC64003E5D00 /* MovieListVM.swift */; };
@@ -33,6 +33,7 @@
 /* Begin PBXFileReference section */
 		89C4DFB600362DA51167AC47 /* Pods_NaverMovieSearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NaverMovieSearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		982F80C3488319D5330F2ABC /* Pods-NaverMovieSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaverMovieSearch.release.xcconfig"; path = "Target Support Files/Pods-NaverMovieSearch/Pods-NaverMovieSearch.release.xcconfig"; sourceTree = "<group>"; };
+		D2055E2D2723E53400159EB3 /* MoyaNaverMovieAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaNaverMovieAPI.swift; sourceTree = "<group>"; };
 		D2548CB126AA3B4F00093C33 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		D29A52FD26A79F9D003E5D00 /* NaverMovieSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaverMovieSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D29A530026A79F9D003E5D00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,7 +47,6 @@
 		D29A532026A7ACC7003E5D00 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		D29A532226A7ACD0003E5D00 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D29A532626A7B216003E5D00 /* MovieItemVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieItemVO.swift; sourceTree = "<group>"; };
-		D29A532826A7B2DD003E5D00 /* NaverMovieAPIResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMovieAPIResponseData.swift; sourceTree = "<group>"; };
 		D29A532A26A7C108003E5D00 /* UIKit_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKit_Extension.swift; sourceTree = "<group>"; };
 		D29A532C26A7C481003E5D00 /* MovieItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieItemCell.swift; sourceTree = "<group>"; };
 		D29A533126A7CC64003E5D00 /* MovieListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListVM.swift; sourceTree = "<group>"; };
@@ -158,6 +158,7 @@
 				D29A532026A7ACC7003E5D00 /* NetworkResult.swift */,
 				D29A532226A7ACD0003E5D00 /* NetworkService.swift */,
 				D2C079B026A7F3FC0022968F /* MovieSearchService.swift */,
+				D2055E2D2723E53400159EB3 /* MoyaNaverMovieAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -175,7 +176,6 @@
 		D29A532526A7B1F0003E5D00 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D29A532826A7B2DD003E5D00 /* NaverMovieAPIResponseData.swift */,
 				D29A532626A7B216003E5D00 /* MovieItemVO.swift */,
 			);
 			path = Model;
@@ -303,11 +303,11 @@
 				D29A532B26A7C108003E5D00 /* UIKit_Extension.swift in Sources */,
 				D2C079B126A7F3FC0022968F /* MovieSearchService.swift in Sources */,
 				D2C079B526A7FC0A0022968F /* Foundation_Extension.swift in Sources */,
+				D2055E2E2723E53400159EB3 /* MoyaNaverMovieAPI.swift in Sources */,
 				D29A533226A7CC64003E5D00 /* MovieListVM.swift in Sources */,
 				D2548CB226AA3B4F00093C33 /* GradientButton.swift in Sources */,
 				D2CDAD492723DFEB0088C478 /* FavoriteMovieListVC.swift in Sources */,
 				D29A530526A79F9D003E5D00 /* MovieListVC.swift in Sources */,
-				D29A532926A7B2DD003E5D00 /* NaverMovieAPIResponseData.swift in Sources */,
 				D29A530126A79F9D003E5D00 /* AppDelegate.swift in Sources */,
 				D29A532D26A7C481003E5D00 /* MovieItemCell.swift in Sources */,
 				D29A530326A79F9D003E5D00 /* SceneDelegate.swift in Sources */,
