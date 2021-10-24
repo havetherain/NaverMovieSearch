@@ -1,5 +1,5 @@
 //
-//  MovieItemMoya.swift
+//  MoyaNaverMovieAPI.swift
 //  NaverMovieSearch
 //
 //  Created by 김지우 on 2021/10/23.

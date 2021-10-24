@@ -173,7 +173,7 @@ extension MovieListVC: UITextFieldDelegate {
             return false
         }
 
-        vm.getMovieInfos(word: searchWord) { errorTitle, errorMsg, result in
+        vm.getMovies(word: searchWord) { errorTitle, errorMsg, result in
             if result {
                 self.movieItemTableView.reloadData()
             } else {
@@ -181,6 +181,7 @@ extension MovieListVC: UITextFieldDelegate {
                 self.makeSimpleAlert(title: title, content: msg)
             }
         }
+
         return true
     }
 }

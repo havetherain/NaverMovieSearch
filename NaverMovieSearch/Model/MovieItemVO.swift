@@ -7,6 +7,15 @@
 
 import Foundation
 
+struct NaverMovieAPIResponseData: Codable {
+    let display: Int?
+    let items: MovieItems?
+
+    enum CodingKeys: String, CodingKey {
+        case display, items
+    }
+}
+
 class MovieItemVO: Codable {
     let title: String?
     let link: String?
